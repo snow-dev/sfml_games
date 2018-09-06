@@ -19,13 +19,20 @@ namespace game {
         void processEvents();
         void update(sf::Time deltaTime);
         void render();
+        void updateStatistics(sf::Time elapsedTime);
         void handlePlayerInput(sf::Keyboard::Key key, bool isPressed);
 
-        sf::RenderWindow _window;
-        sf::CircleShape _player;
-        int PlayerSpeed = 60;
-        sf::Time TimePerFrame = sf::seconds(1.f / 60.f);
+        static const float PlayerSpeed;
+        static const sf::Time TimePerFrame;
 
+        sf::RenderWindow _window;
+        sf::Texture _texture;
+        sf::Sprite _player;
+        sf::Text _statisticsText;
+        sf::Font _font;
+        sf::Time _statisticsUpdateTime;
+
+        std::size_t _statisticsNumFrames;
         bool _isMovingUp;
         bool _isMovingDown;
         bool _isMovingLeft;
